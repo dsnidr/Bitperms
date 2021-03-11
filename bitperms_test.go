@@ -26,14 +26,14 @@ func TestPermissionValue_Serialize(t *testing.T) {
 
 func TestPermissionValue_Deserialize(t *testing.T) {
 	tests := []struct {
-		name string
+		name       string
 		serialized string
-		want PermissionValue
+		want       PermissionValue
 	}{
 		{
-			name: "Deserialize-01",
-			serialized:   "192743628728",
-			want: 192743628728,
+			name:       "Deserialize-01",
+			serialized: "192743628728",
+			want:       192743628728,
 		},
 	}
 	for _, tt := range tests {
@@ -48,7 +48,7 @@ func TestPermissionValue_Deserialize(t *testing.T) {
 
 func TestPermissionValue_HasFlag(t *testing.T) {
 	type args struct {
-		flag int64
+		flag uint64
 	}
 	tests := []struct {
 		name string
@@ -130,7 +130,7 @@ func TestPermissionValue_HasFlag(t *testing.T) {
 
 func TestPermissionValue_HasFlags(t *testing.T) {
 	type args struct {
-		flags []int64
+		flags []uint64
 	}
 	tests := []struct {
 		name string
@@ -142,7 +142,7 @@ func TestPermissionValue_HasFlags(t *testing.T) {
 			name: "HasFlags.01",
 			pv:   0b11111111,
 			args: args{
-				flags: []int64{0b00000001, 0b10000000, 0b00010000, 0b00000100},
+				flags: []uint64{0b00000001, 0b10000000, 0b00010000, 0b00000100},
 			},
 			want: true,
 		},
@@ -150,7 +150,7 @@ func TestPermissionValue_HasFlags(t *testing.T) {
 			name: "HasFlags.02",
 			pv:   0b11111110,
 			args: args{
-				flags: []int64{0b00000001, 0b10000000},
+				flags: []uint64{0b00000001, 0b10000000},
 			},
 			want: false,
 		},
